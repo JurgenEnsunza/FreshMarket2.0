@@ -25,7 +25,7 @@ public class VentanaCatalogo extends JFrame {
 	
 	
 
-	public VentanaCatalogo(JFrame ventanaInicio2) {
+	public VentanaCatalogo(JFrame ventanaInicio) {
 		setSize(400,300);
 		setVisible(true);
 		panelUnico = new JPanel(new GridLayout(2,3));
@@ -39,14 +39,7 @@ public class VentanaCatalogo extends JFrame {
 		btn6 = new JButton("Carrito o Perfil");
 		
 		titulo = new JLabel("CATALOGO DE FRESHMARKET");
-		
-		
-		/*panelNorte = new JPanel(new GridLayout(1,0));
-		panelNorte.add(titulo);
-		
-		getContentPane().add(panelNorte,BorderLayout.NORTH);*/
-		
-		
+			
 		panelUnico.add(btn1);
 		panelUnico.add(btn2);
 		panelUnico.add(btn3);
@@ -56,11 +49,12 @@ public class VentanaCatalogo extends JFrame {
 	
 		setContentPane(panelUnico);
 		
-		
-		
-		
-		
-		
+		btn1.addActionListener(e ->{
+			
+			
+			
+			
+		});
 		
 		
 		
