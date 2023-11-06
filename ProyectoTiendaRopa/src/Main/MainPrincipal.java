@@ -15,7 +15,7 @@ public class MainPrincipal {
 
 		
 	//VentanaInicioSesion v = new VentanaInicioSesion();
-	VentanaCatalogo a = new VentanaCatalogo();
+	VentanaInicioSesion a = new VentanaInicioSesion();
 	
 	}
 	

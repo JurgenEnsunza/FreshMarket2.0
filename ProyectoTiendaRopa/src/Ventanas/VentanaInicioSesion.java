@@ -16,11 +16,13 @@ import Objetos.Cliente;
 import Objetos.Tienda;
 
 public class VentanaInicioSesion extends JFrame{
-	JButton  btnIniciarSesionCliente,    btnIniciarSesionAdmin,     btnRegistrarseCliente;
-	JPanel   pNorte,    pSur,    pCentro,   pCentroIzquierda,   pCentroDerecha, panelDNIinicio, panelDNIregistro, panelCONTRAinicio, panelCONTRAregistro, panelFECHANACIMIENTOregistro, panelNOMBREregistro ;
-	JLabel   lblDNIregistro, lblNOMBREregistro, lblFECHANACIMIENTOregistro, lblCONTRAregistro, lblDNIinicio, lblCONTRAinicio, tituloInicio, tituloRegistro;
-	JTextField   txtDNIregistro, txtDNIinicio, txtFECHANACIMIENTOregistro, txtNOMBREregistro;
-	JPasswordField   txtCONTRAregistro,      txtCONTRAinicio;
+	private JButton  btnIniciarSesionCliente,    btnIniciarSesionAdmin,     btnRegistrarseCliente;
+	private JPanel   pNorte,    pSur,    pCentro,   pCentroIzquierda,   pCentroDerecha, panelDNIinicio, panelDNIregistro, panelCONTRAinicio, panelCONTRAregistro, panelFECHANACIMIENTOregistro, panelNOMBREregistro ;
+	private JLabel   lblDNIregistro, lblNOMBREregistro, lblFECHANACIMIENTOregistro, lblCONTRAregistro, lblDNIinicio, lblCONTRAinicio, tituloInicio, tituloRegistro;
+	private JTextField   txtDNIregistro, txtDNIinicio, txtFECHANACIMIENTOregistro, txtNOMBREregistro;
+	private JPasswordField   txtCONTRAregistro,      txtCONTRAinicio;
+	private JFrame ventanaCatalogo, ventanaInicio;
+	
 	
 	//private static final String nomficheroClientes = "Clientes.csv";
 	  
@@ -30,6 +32,7 @@ public class VentanaInicioSesion extends JFrame{
 		// TODO Auto-generated constructor stub
 		setSize(500,400);
 		setVisible(true);
+		ventanaInicio = this;
 		
 		pNorte = new JPanel(new GridLayout(1, 2));
 		pCentro = new JPanel(new GridLayout(1, 2));
@@ -141,6 +144,7 @@ public class VentanaInicioSesion extends JFrame{
 				JOptionPane.showMessageDialog(null, "Cliente registrado con éxito","REGISTRADO",JOptionPane.INFORMATION_MESSAGE);
 				System.out.println(c);
 			}
+			limpiarTEXTOS();
 		});
 		
 		btnIniciarSesionCliente.addActionListener((e)->{
@@ -150,6 +154,8 @@ public class VentanaInicioSesion extends JFrame{
 			if (Tienda.buscarClientes(dni)!=null && Tienda.buscarClientes(dni).getContraseña().equals(con)) {
 				
 					JOptionPane.showMessageDialog(null, "Has iniciado sesion como cliente ","Incio Sesion", JOptionPane.INFORMATION_MESSAGE);
+				new VentanaCatalogo(ventanaInicio);
+			ventanaInicio.dispose();
 					
 			
 			}else if (Tienda.buscarClientes(dni)!= null && Tienda.buscarClientes(dni).getContraseña() != con)  {
@@ -157,11 +163,27 @@ public class VentanaInicioSesion extends JFrame{
 			
 			}else {
 				JOptionPane.showMessageDialog(null,"Tienes que registrarte como cliente","Incio Sesion",JOptionPane.INFORMATION_MESSAGE);
-				}	
+				}
+			limpiarTEXTOS();
+			
 		});
+		
+	
+	
+	}	
+			public void limpiarTEXTOS() {
+				txtDNIinicio.setText("");
+				txtCONTRAinicio.setText("");
+				txtDNIregistro.setText("");
+				txtNOMBREregistro.setText("");
+				txtFECHANACIMIENTOregistro.setText("");
+				txtCONTRAregistro.setText("");
+				
+				
+			}
 	
 		
 	
-	}
+	
 
 }

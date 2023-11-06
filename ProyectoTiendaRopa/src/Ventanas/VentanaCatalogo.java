@@ -18,15 +18,18 @@ public class VentanaCatalogo extends JFrame {
 	private JButton btn1, btn2, btn3,btn4 ,btn5, btn6;
 	private JPanel panelUnico, panelNorte;
 	private JLabel titulo;
+	private JFrame ventanaCatalogo,ventanaInicio;
+	
 	
 	
 	
 	
 
-	public VentanaCatalogo() {
+	public VentanaCatalogo(JFrame ventanaInicio2) {
 		setSize(400,300);
 		setVisible(true);
 		panelUnico = new JPanel(new GridLayout(2,3));
+		ventanaCatalogo = this;
 		
 		btn1 =new JButton("Camisetas");
 		btn2 =new JButton("Sudaderas con Capucha");
