@@ -30,6 +30,7 @@ public class VentanaCatalogo extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		panelUnico = new JPanel(new GridLayout(2,3));
+		
 		ventanaCatalogo = this;
 		
 		//Creacion de los Botones
@@ -63,8 +64,11 @@ public class VentanaCatalogo extends JFrame {
 		});
 		
 		btnSudaderaConCapucha.addActionListener(e ->{
+			
+			
 			new VentanaSudaderaConCapucha(ventanaCatalogo);
 			ventanaCatalogo.dispose();
+			
 			
 		});
 		

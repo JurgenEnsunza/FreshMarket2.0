@@ -3,6 +3,7 @@ package Main;
 import Objetos.Cliente;
 import Objetos.Tienda;
 import Ventanas.VentanaInicioSesion;
+import Ventanas.VentanaSudaderaConCapucha;
 import Ventanas.VentanaCatalogo;
 
 public class MainPrincipal {
@@ -16,6 +17,7 @@ public class MainPrincipal {
 		
 	//VentanaInicioSesion v = new VentanaInicioSesion();
 	VentanaInicioSesion a = new VentanaInicioSesion();
+	//VentanaSudaderaConCapucha v = new VentanaSudaderaConCapucha(null);
 	
 	}
 	
