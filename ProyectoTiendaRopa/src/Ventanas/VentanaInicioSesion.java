@@ -31,16 +31,17 @@ public class VentanaInicioSesion extends JFrame{
 	public VentanaInicioSesion() {
 		// TODO Auto-generated constructor stub
 		setSize(500,400);
+		setLocationRelativeTo(null);
 		setVisible(true);
 		ventanaInicio = this;
 		
+		//Creacion de la distribucion del PanelPrincipal
 		pNorte = new JPanel(new GridLayout(1, 2));
 		pCentro = new JPanel(new GridLayout(1, 2));
 		pSur = new JPanel();
 		pCentroIzquierda = new JPanel(new GridLayout(2, 2));
 		panelDNIinicio = new JPanel(new GridLayout(3,0));
 		panelCONTRAinicio = new JPanel(new GridLayout(3,0));
-		
 		pCentroDerecha = new JPanel(new GridLayout(4, 2));
 		panelDNIregistro =  new JPanel(new GridLayout(3,0));
 		panelNOMBREregistro = new JPanel(new GridLayout(3,0));
@@ -53,6 +54,7 @@ public class VentanaInicioSesion extends JFrame{
 		getContentPane().add(pSur, BorderLayout.SOUTH);
 		
 		
+		//Labeles + textFields + Modificacion Letras
 		lblDNIregistro = new  JLabel("       -DNI: ");
 		lblDNIregistro.setFont(new Font(Font.SANS_SERIF, Font.ITALIC,27));
 		lblNOMBREregistro = new JLabel("       -Nombre: ");
@@ -72,7 +74,7 @@ public class VentanaInicioSesion extends JFrame{
 		txtCONTRAinicio = new JPasswordField();
 		txtCONTRAregistro = new  JPasswordField();
 		
-		
+		//Añadiendo los labels y txtField a los paneles
 		pCentroIzquierda.add(lblDNIinicio);
 		pCentroIzquierda.add(panelDNIinicio);
 		panelDNIinicio.add(new JPanel());
@@ -112,24 +114,25 @@ public class VentanaInicioSesion extends JFrame{
 		panelCONTRAregistro.add(txtCONTRAregistro);
 		panelCONTRAregistro.add(new JPanel());
 		
-		
+		//Creacion Botones
 		btnIniciarSesionAdmin=new JButton("Inicio Sesion como Administrador ");
 		btnIniciarSesionCliente = new JButton("Inicia Sesion como Cliente ");
 		btnRegistrarseCliente= new JButton("Registrate");
 		
-		
+		//Añadiendo los botones
 		pSur.add(btnIniciarSesionAdmin);
 		pSur.add(btnIniciarSesionCliente);
 		pSur.add(btnRegistrarseCliente);
 		
+		//Creando los titulos
 		tituloInicio= new JLabel("INICIA SESION AQUI");
 		tituloRegistro = new JLabel("REGISTRATE AQUI");
 		
-		
+		//Añadiendo los titulos
 		pNorte.add(tituloInicio);
 		pNorte.add(tituloRegistro);
 		
-		//Eventos
+		//Eventos botones
 		btnRegistrarseCliente.addActionListener((e)->{
 			String dni = txtDNIregistro.getText();
 			String nom = txtNOMBREregistro.getText();
@@ -170,8 +173,8 @@ public class VentanaInicioSesion extends JFrame{
 		
 	
 	
-	}	
-			public void limpiarTEXTOS() {
+	}	//Metodo para limpiar el texto escrito anteriormente en JtextFields
+				public void limpiarTEXTOS() {
 				txtDNIinicio.setText("");
 				txtCONTRAinicio.setText("");
 				txtDNIregistro.setText("");
