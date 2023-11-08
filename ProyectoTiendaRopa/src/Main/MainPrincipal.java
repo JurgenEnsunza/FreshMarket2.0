@@ -17,11 +17,11 @@ public class MainPrincipal {
 		Cliente c1 = new Cliente("222","222","22","22");
 		Tienda.aniadirCliente(c1);
 		
-		Tienda.cargarListaSudaderas("C:\\Users\\erabiltzailea\\git\\FreshMarket\\ProyectoTiendaRopa\\ProyectoTiendaRopaDatos\\SudaderasConCapucha");
-
+		//Tienda.cargarListaSudaderas("C:\\Users\\erabiltzailea\\git\\FreshMarket\\ProyectoTiendaRopa\\ProyectoTiendaRopaDatos\\SudaderasConCapucha");
+		new VentanaInicioSesion();
 		
 	//VentanaInicioSesion v = new VentanaInicioSesion();
-	VentanaInicioSesion a = new VentanaInicioSesion();
+	//VentanaInicioSesion a = new VentanaInicioSesion();
 	//VentanaSudaderaConCapucha v = new VentanaSudaderaConCapucha(null);
 	
 	}

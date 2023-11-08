@@ -22,6 +22,7 @@ public class VentanaInicioSesion extends JFrame{
 	private JTextField   txtDNIregistro, txtDNIinicio, txtFECHANACIMIENTOregistro, txtNOMBREregistro;
 	private JPasswordField   txtCONTRAregistro,      txtCONTRAinicio;
 	private JFrame ventanaCatalogo, ventanaInicio;
+	private Font fuenteReg,fuenteInicio;
 	
 	
 	//private static final String nomficheroClientes = "Clientes.csv";
@@ -30,9 +31,10 @@ public class VentanaInicioSesion extends JFrame{
 
 	public VentanaInicioSesion() {
 		// TODO Auto-generated constructor stub
-		setSize(500,400);
+		setSize(1280,400);
+		setTitle("Fresh Market");
+		setResizable(false);
 		setLocationRelativeTo(null);
-		setVisible(true);
 		ventanaInicio = this;
 		
 		//Creacion de la distribucion del PanelPrincipal
@@ -56,17 +58,19 @@ public class VentanaInicioSesion extends JFrame{
 		
 		//Labeles + textFields + Modificacion Letras
 		lblDNIregistro = new  JLabel("       -DNI: ");
-		lblDNIregistro.setFont(new Font(Font.SANS_SERIF, Font.ITALIC,27));
+		fuenteReg= new Font(Font.SANS_SERIF, Font.ITALIC,27);
+		fuenteInicio= new Font(Font.SANS_SERIF, Font.ITALIC,35);
+		lblDNIregistro.setFont(fuenteReg);
 		lblNOMBREregistro = new JLabel("       -Nombre: ");
-		lblNOMBREregistro.setFont(new Font(Font.SANS_SERIF, Font.ITALIC,27));
-		lblFECHANACIMIENTOregistro = new JLabel("        -Fehca Nacimiento: ");
-		lblFECHANACIMIENTOregistro.setFont(new Font(Font.SANS_SERIF, Font.ITALIC,27));
+		lblNOMBREregistro.setFont(fuenteReg);
+		lblFECHANACIMIENTOregistro = new JLabel("        -Fecha Nacimiento: ");
+		lblFECHANACIMIENTOregistro.setFont(fuenteReg);
 		lblCONTRAregistro = new JLabel ("        -Contraseña: ");
-		lblCONTRAregistro.setFont(new Font(Font.SANS_SERIF, Font.ITALIC,27));
+		lblCONTRAregistro.setFont(fuenteReg);
 		lblDNIinicio = new JLabel ("    -DNI: ");
-		lblDNIinicio.setFont(new Font(Font.SANS_SERIF, Font.ITALIC, 29));
+		lblDNIinicio.setFont(fuenteInicio);
 		lblCONTRAinicio = new JLabel("    -Contraseña: ");
-		lblCONTRAinicio.setFont(new Font(Font.SANS_SERIF, Font.ITALIC,29));
+		lblCONTRAinicio.setFont(fuenteInicio);
 		txtDNIregistro = new JTextField();
 		txtDNIinicio = new JTextField();
 		txtNOMBREregistro = new  JTextField();
@@ -170,7 +174,7 @@ public class VentanaInicioSesion extends JFrame{
 			limpiarTEXTOS();
 			
 		});
-		
+		setVisible(true);
 	
 	
 	}	//Metodo para limpiar el texto escrito anteriormente en JtextFields
