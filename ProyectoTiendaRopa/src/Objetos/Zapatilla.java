@@ -26,9 +26,9 @@ public class Zapatilla extends Producto{
 	 * @param marca
 	 * @param tipoZapatilla
 	 */
-	public Zapatilla(String id, Double precio, Talla talla, String paisFabricado, int unidades, String marca,
+	public Zapatilla(String id,String nombre, Double precio, Talla talla, String paisFabricado, int unidades, String marca,
 			TipoUso tipoZapatilla) {
-		super(id, precio, talla, paisFabricado, unidades, marca);
+		super(id,nombre, precio, talla, paisFabricado, unidades, marca);
 		this.tipoZapatilla = tipoZapatilla;
 	}
 

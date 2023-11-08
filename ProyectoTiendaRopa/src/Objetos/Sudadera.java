@@ -52,9 +52,9 @@ public class Sudadera extends Producto {
 	 * @param tipoUsoSudadera
 	 * @param gorro
 	 */
-	public Sudadera(String id, Double precio, Talla talla, String paisFabricado, int unidades, String marca,
+	public Sudadera(String id,String nombre, Double precio, Talla talla, String paisFabricado, int unidades, String marca,
 			Largura larguraSudadera, TipoUso tipoUsoSudadera, Capucha gorro) {
-		super(id, precio, talla, paisFabricado, unidades, marca);
+		super(id,nombre, precio, talla, paisFabricado, unidades, marca);
 		this.larguraSudadera = larguraSudadera;
 		TipoUsoSudadera = tipoUsoSudadera;
 		Gorro = gorro;

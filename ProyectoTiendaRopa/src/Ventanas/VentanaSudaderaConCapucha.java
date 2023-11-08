@@ -2,6 +2,7 @@ package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -11,10 +12,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Objetos.ModeloTablaSudadera;
+import Objetos.Sudadera;
 import Objetos.Talla;
+import Objetos.Tienda;
 
 public class VentanaSudaderaConCapucha extends JFrame {
 	private JFrame ventanaSudaderaConCapucha;
@@ -26,6 +31,13 @@ public class VentanaSudaderaConCapucha extends JFrame {
 	private JComboBox<Talla> elegirTalla;
 	private JPanel panelNorte,panelCentro,panelCentroIzquierda,panelCentroDerecha,panelCentroDerechaArriba,panelCentroDerechaAbajo,panelSur,panelNorteIzquierdaArriba,panelNorteIzquierdaAbajo,panelNorteDerechaArriba,panelNorteDerechaAbajo;
 	private JLabel lblRangoPrecio,lblUnidades,lblTalla;
+	
+	
+	private ModeloTablaSudadera modeloSudadera;
+	private JTable tabla;
+	private JScrollPane scrollTabla;
+	
+	
 	
 	
 	
@@ -76,7 +88,7 @@ public class VentanaSudaderaConCapucha extends JFrame {
 		panelNorteDerechaAbajo.add(rangoPrecio).setSize(100,100);
 		
 		//Creacion ComboBox + Añadir panel
-		elegirTalla= new JComboBox<Talla>();
+		elegirTalla= new JComboBox<Talla>(Talla.values());
 		panelNorteDerechaAbajo.add(elegirTalla);
 		
 		//Creacion JSpinner + Añadir Panel
@@ -94,11 +106,23 @@ public class VentanaSudaderaConCapucha extends JFrame {
 		panelSur.add(btnVerCarrito);
 		
 		//Creacion JtextArea
-		verInformacionCompleta = new JTextArea(80,50);
+		verInformacionCompleta = new JTextArea(80,80);
 		
-		//Creacion ScrollInformacionEntera
+		//Creacion ScrollInformacionEntera y añadir
 		scrollInformacionEntera = new JScrollPane(verInformacionCompleta);
 		panelCentroDerechaAbajo.add(scrollInformacionEntera);
+		
+		//Creacion Tabla
+		modeloSudadera = new ModeloTablaSudadera(null);
+		tabla = new JTable(modeloSudadera);
+		scrollTabla = new JScrollPane(tabla);
+		panelCentroIzquierda.add(scrollTabla);
+		List<Sudadera> sudadera = Tienda.getSudaderaLista();
+		tabla.setModel(new ModeloTablaSudadera(sudadera));
+		
+		
+		
+		
 		
 			
 		

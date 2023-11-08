@@ -8,11 +8,16 @@ import Ventanas.VentanaCatalogo;
 
 public class MainPrincipal {
 
+	
+
+
 	public static void main(String[] args) {
 		
 		// TODO Auto-generated method stub
 		Cliente c1 = new Cliente("222","222","22","22");
 		Tienda.aniadirCliente(c1);
+		
+		Tienda.cargarListaSudaderas("C:\\Users\\erabiltzailea\\git\\FreshMarket\\ProyectoTiendaRopa\\ProyectoTiendaRopaDatos\\SudaderasConCapucha");
 
 		
 	//VentanaInicioSesion v = new VentanaInicioSesion();

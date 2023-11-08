@@ -18,9 +18,9 @@ public class Pantalon extends Producto{
 	 * @param larguraPantalon
 	 * @param tipoDePantalon
 	 */
-	public Pantalon(String id, Double precio, Talla talla, String paisFabricado, int unidades, String marca,
+	public Pantalon(String id,String nombre, Double precio, Talla talla, String paisFabricado, int unidades, String marca,
 			Largura larguraPantalon, TipoUso tipoDePantalon) {
-		super(id, precio, talla, paisFabricado, unidades, marca);
+		super(id,nombre, precio, talla, paisFabricado, unidades, marca);
 		this.larguraPantalon = larguraPantalon;
 		this.tipoDePantalon = tipoDePantalon;
 	}

@@ -15,9 +15,9 @@ public class Camiseta extends  Producto {
 	 * @param larguraCamiseta
 	 * @param tipoDeCamiseta
 	 */
-	public Camiseta(String id, Double precio, Talla talla, String paisFabricado, int unidades, String marca,
+	public Camiseta(String id,String nombre, Double precio, Talla talla, String paisFabricado, int unidades, String marca,
 			Largura larguraCamiseta, TipoUso tipoDeCamiseta) {
-		super(id, precio, talla, paisFabricado, unidades, marca);
+		super(id,nombre, precio, talla, paisFabricado, unidades, marca);
 		this.larguraCamiseta = larguraCamiseta;
 		this.tipoDeCamiseta = tipoDeCamiseta;
 	}
