@@ -17,7 +17,7 @@ public class MainPrincipal {
 		Cliente c1 = new Cliente("222","222","22","22");
 		Tienda.aniadirCliente(c1);
 		
-		//Tienda.cargarListaSudaderas("C:\\Users\\erabiltzailea\\git\\FreshMarket\\ProyectoTiendaRopa\\ProyectoTiendaRopaDatos\\SudaderasConCapucha");
+		Tienda.cargarListaSudaderas("C:\\Users\\erabiltzailea\\git\\FreshMarket2.0\\ProyectoTiendaRopa\\ProyectoTiendaRopaDatos\\SudaderasConCapucha.CSV");
 		new VentanaInicioSesion();
 		
 	//VentanaInicioSesion v = new VentanaInicioSesion();
