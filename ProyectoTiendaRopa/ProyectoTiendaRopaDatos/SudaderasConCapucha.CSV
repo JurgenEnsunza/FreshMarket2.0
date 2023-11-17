@@ -1,2 +1,7 @@
 id;nombre;precio;talla;paisFrabricado;unidades;marca;largura;tipoDeUso;gorro
 11;NikeSudap;10;M;Alemania;20;Nike;LARGO;CASUAL;ConGorro
+12;NikeSudap2;20;XXS;Turquia;20;Nike;LARGO;CASUAL;ConGorro
+13;NikeSudap3;10;XS;China;30;Nike;LARGO;CASUAL;ConGorro
+14;NikeSudap4;30;L;China;30;Nike;LARGO;CASUAL;ConGorro
+15;NikeSudap5;35;L;China;20;Nike;LARGO;CASUAL;ConGorro
+

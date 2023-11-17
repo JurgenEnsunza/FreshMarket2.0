@@ -2,6 +2,9 @@ package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -15,6 +18,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import Objetos.ModeloTablaSudadera;
 import Objetos.Sudadera;
@@ -28,7 +33,9 @@ public class VentanaSudaderaConCapucha extends JFrame {
 	private JSlider rangoPrecio;
 	private JScrollPane scrollMirarArticulos,scrollInformacionEntera;
 	private JTextArea verInformacionCompleta,titulo;
+	
 	private JComboBox<Talla> elegirTalla;
+	
 	private JPanel panelNorte,panelCentro,panelCentroIzquierda,panelCentroDerecha,panelCentroDerechaArriba,panelCentroDerechaAbajo,panelSur,panelNorteIzquierdaArriba,panelNorteIzquierdaAbajo,panelNorteDerechaArriba,panelNorteDerechaAbajo;
 	private JLabel lblRangoPrecio,lblUnidades,lblTalla;
 	
@@ -84,8 +91,12 @@ public class VentanaSudaderaConCapucha extends JFrame {
 		panelNorteDerechaArriba.add(lblUnidades);
 		
 		//Creacion Slider + añadir panel
-		rangoPrecio = new JSlider();
-		panelNorteDerechaAbajo.add(rangoPrecio).setSize(100,100);
+		rangoPrecio = new JSlider(0,100,0);
+		rangoPrecio.setPaintTicks(true);
+		rangoPrecio.setPaintLabels(true);
+		rangoPrecio.setMinorTickSpacing(15);
+		rangoPrecio.setMajorTickSpacing(20);
+		panelNorteDerechaAbajo.add(rangoPrecio);
 		
 		//Creacion ComboBox + Añadir panel
 		elegirTalla= new JComboBox<Talla>(Talla.values());
@@ -119,6 +130,46 @@ public class VentanaSudaderaConCapucha extends JFrame {
 		panelCentroIzquierda.add(scrollTabla);
 		List<Sudadera> sudadera = Tienda.getSudaderaLista();
 		tabla.setModel(new ModeloTablaSudadera(sudadera));
+		
+		//Eventos
+		
+		rangoPrecio.addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent e) {
+			int precio = rangoPrecio.getValue();
+			List<Sudadera> listaCompletaSudaderas =  Tienda.getSudaderaLista();
+			List<Sudadera> listaNuevaTablaSudaderas = new ArrayList<>();
+			for(Sudadera S :listaCompletaSudaderas) {
+				if(S.getPrecio()>= rangoPrecio.getValue()) {
+					listaNuevaTablaSudaderas.add(S);
+					
+				}
+				tabla.setModel(new ModeloTablaSudadera(listaNuevaTablaSudaderas));
+			}
+			}
+		});
+		
+		elegirTalla.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Talla eleccion = (Talla) elegirTalla.getSelectedItem();
+				List<Sudadera> listaCompletaSudaderas = Tienda.getSudaderaLista();
+				List<Sudadera> listaNuevaTablaSudaderas = new ArrayList<Sudadera>();
+				for (Sudadera S:listaCompletaSudaderas) {
+					if(S.getTalla().equals(eleccion)) {
+						listaNuevaTablaSudaderas.add(S);
+						
+					}
+				}tabla.setModel(new ModeloTablaSudadera(listaNuevaTablaSudaderas));
+				
+			}
+		});
+		
+		
+		
+		
 		
 		
 		
