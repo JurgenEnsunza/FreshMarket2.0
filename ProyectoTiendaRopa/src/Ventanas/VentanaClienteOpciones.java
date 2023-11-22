@@ -6,10 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VentanaClienteOpciones extends JFrame{
+	private JFrame ventanaClienteOpciones;
     
     public VentanaClienteOpciones(){
         //super("Panel de Cliente"); //titulo ventana?
-        
+        ventanaClienteOpciones  = this;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300,200);
         setLocationRelativeTo(null);
@@ -27,6 +28,11 @@ public class VentanaClienteOpciones extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e){
                 JOptionPane.showMessageDialog(null, "mostrando Stock");
+                VentanaCatalogo v = new VentanaCatalogo(ventanaClienteOpciones);
+                ventanaClienteOpciones.dispose();
+                
+                
+                
             }
         });
         

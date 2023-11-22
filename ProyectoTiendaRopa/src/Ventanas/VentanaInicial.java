@@ -1,6 +1,10 @@
 package Ventanas;
 
 import javax.swing.*;
+
+import Objetos.Cliente;
+import Objetos.Tienda;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -165,12 +169,12 @@ class VentanaCliente extends JFrame {
         
         //etiquetas y campos de texto
         JLabel lblUsuario = new JLabel("Usuario: ");
-        JTextField txtUsuario = new JTextField();
+        JTextField txtDni = new JTextField();
         JLabel lblContraseña = new JLabel("Contraseña: ");
         JPasswordField txtContrasena = new JPasswordField();
         
         panelCampos.add(lblUsuario);
-        panelCampos.add(txtUsuario);
+        panelCampos.add(txtDni);
         panelCampos.add(lblContraseña);
         panelCampos.add(txtContrasena);
         
@@ -182,11 +186,12 @@ class VentanaCliente extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
                 //Acciones que se realizan al pulsar el boton
-                String usuario = txtUsuario.getText();
+                String dni = txtDni.getText();
+            	String usuario = txtDni.getText();
                 char[] contrasenaChars = txtContrasena.getPassword();
                 String contrasena = new String(contrasenaChars);
                 //Aqui realizas la verificación de los usuarios
-                if(verificarUsuario(usuario, contrasena)){
+                if( Tienda.buscarClientes(dni) != null && Tienda.buscarClientes(dni).getContraseña().equals(contrasena)  ){
                     JOptionPane.showMessageDialog(null, "¡Inicio de sesion exitoso!");
                     setVisible(false);
                     VentanaClienteOpciones ventanaClienteOp = new VentanaClienteOpciones();
@@ -252,11 +257,16 @@ class VentanaRegistro extends JFrame {
             String fechaNacimiento = fechaNacimientoField.getText();
             String contraseña = new String(contraseñaField.getPassword());
             
-            if(verificarDNI(dni) && verificarNombre(nombre) && verificarFecha(fechaNacimiento)){
+            if(verificarDNI(dni) && verificarNombre(nombre) && verificarFecha(fechaNacimiento)&& Tienda.buscarClientes(dni) == null){
                 JOptionPane.showMessageDialog(null, "¡Registro exitoso!");
+                Cliente nueva = new Cliente(dni,nombre,fechaNacimiento,contraseña);
+                Tienda.aniadirCliente(nueva);
+                
                 setVisible(false);
-            } else {
-                JOptionPane.showMessageDialog(null, "¡Error en los datos!");
+            } else if(Tienda.buscarClientes(dni) != null && verificarDNI(dni) && verificarNombre(nombre) && verificarFecha(fechaNacimiento))  {
+                JOptionPane.showMessageDialog(null, "¡Cliente ya registrado!");
+            }else {
+            	JOptionPane.showMessageDialog(null,"Error en los datos introducidos");
             }
         });
         

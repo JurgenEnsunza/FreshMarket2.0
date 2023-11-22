@@ -21,6 +21,10 @@ public class Tienda {
 	
 	
 	
+	public static List<Cliente> getClientes() {
+		return clientes;
+	}
+
 	public static List<Sudadera> getSudaderaLista() {
 		return sudaderaLista;
 	}

@@ -31,7 +31,7 @@ public class VentanaSudaderaConCapucha extends JFrame {
 	private JButton btnVolver, btnAniadirCarrito, btnVerCarrito;
 	private JSpinner unidadesSeleccionar;
 	private JSlider rangoPrecio;
-	private JScrollPane scrollMirarArticulos,scrollInformacionEntera;
+	private JScrollPane scrollInformacionEntera;
 	private JTextArea verInformacionCompleta,titulo;
 	
 	private JComboBox<Talla> elegirTalla;
@@ -43,6 +43,8 @@ public class VentanaSudaderaConCapucha extends JFrame {
 	private ModeloTablaSudadera modeloSudadera;
 	private JTable tabla;
 	private JScrollPane scrollTabla;
+	
+	private List<Sudadera> nuevaListaSudaderaConCapuha = new ArrayList<>();
 	
 	
 	
@@ -141,12 +143,12 @@ public class VentanaSudaderaConCapucha extends JFrame {
 			List<Sudadera> listaCompletaSudaderas =  Tienda.getSudaderaLista();
 			List<Sudadera> listaNuevaTablaSudaderas = new ArrayList<>();
 			for(Sudadera S :listaCompletaSudaderas) {
-				if(S.getPrecio()>= rangoPrecio.getValue()) {
+				if(S.getPrecio()>= precio) {
 					listaNuevaTablaSudaderas.add(S);
 					
 				}
-				tabla.setModel(new ModeloTablaSudadera(listaNuevaTablaSudaderas));
-			}
+				
+			}tabla.setModel(new ModeloTablaSudadera(listaNuevaTablaSudaderas));
 			}
 		});
 		
@@ -162,8 +164,9 @@ public class VentanaSudaderaConCapucha extends JFrame {
 						listaNuevaTablaSudaderas.add(S);
 						
 					}
-				}tabla.setModel(new ModeloTablaSudadera(listaNuevaTablaSudaderas));
 				
+				
+			}tabla.setModel(new ModeloTablaSudadera(listaNuevaTablaSudaderas));
 			}
 		});
 		
