@@ -11,6 +11,11 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import domain.enums.Capucha;
+import domain.enums.Largura;
+import domain.enums.Talla;
+import domain.enums.TipoUso;
+
 public class Tienda {
 	private static Set<Producto> articulos = new TreeSet<>();
 	private static List<Sudadera> sudaderaLista = new ArrayList<>();
@@ -34,28 +39,6 @@ public class Tienda {
 			}
 		compras.get(c).add(a);
 	 }*/
-	
-	
-	public static Cliente buscarClientes(String dni) {
-		int pos = 0;
-		boolean vd = (false);
-		Cliente c = null;
-		
-		while (!vd && pos<clientes.size()) {
-			c = clientes.get(pos);
-			if (c.getDni().equals(dni)) {
-				vd = true;
-			}else {
-				pos++;
-			}
-			if(vd==true) {
-				return  c;
-				}else {
-				return null;
-				}}
-		return null;
-	}
-			
 	
 	
 	public static void  cargarListaSudaderas(String nombreFichero) {
@@ -101,25 +84,27 @@ public class Tienda {
 		
 	}
 	
-	public static Sudadera buscarSudadera(String nombre) {
-		int pos = 0;
-		boolean vd = (false);
-		Sudadera s = null;
-		
-		while (!vd && pos<sudaderaLista.size()) {
-			s = sudaderaLista.get(pos);
-			if (s.getNombre().equals(nombre)) {
-				vd = true;
-			}else {
-				pos++;
-			}
-			if(vd==true) {
-				return  s;
-				}else {
-				return null;
-				}}
-		return null;
-	}
+	public static Sudadera buscarSudadera (String nombreBuscado) {
+        for (Sudadera sudadera : sudaderaLista) {
+            if (sudadera.getNombre().equals(nombreBuscado)) {
+                return sudadera;
+            }
+        }
+        return null; // Si no se encuentra el objeto con el nombre especificado
+    }
+
+	public static Cliente buscarClientes (String dni) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getDni().equals(dni)) {
+                return cliente;
+            }
+        }
+        return null; // Si no se encuentra el objeto con el nombre especificado
+    }
+
+
+
+
 }
 		
 		

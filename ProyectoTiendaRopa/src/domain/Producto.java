@@ -1,6 +1,8 @@
 package domain;
 
-public class Producto {
+import domain.enums.Talla;
+
+public class Producto implements Comparable <Producto> {
 	
 	
 	private String id;
@@ -64,10 +66,10 @@ public class Producto {
 		this.marca = marca;
 	}
 	@Override
-	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", talla=" + talla
-				+ ", paisFabricado=" + paisFabricado + ", unidades=" + unidades + ", marca=" + marca + "]";
+	public int compareTo(Producto o) {
+		return this.nombre.compareTo(nombre);
 	}
+	
 	
 	
 	

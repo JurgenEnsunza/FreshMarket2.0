@@ -1,6 +1,11 @@
 package domain;
 
-public class Sudadera extends Producto {
+import domain.enums.Capucha;
+import domain.enums.Largura;
+import domain.enums.Talla;
+import domain.enums.TipoUso;
+
+public class Sudadera  extends Producto {
 	
 	private Largura larguraSudadera;
 	private TipoUso TipoUsoSudadera;
@@ -58,13 +63,6 @@ public class Sudadera extends Producto {
 		this.larguraSudadera = larguraSudadera;
 		TipoUsoSudadera = tipoUsoSudadera;
 		Gorro = gorro;
-	}
-	@Override
-	public String toString() {
-		return "Sudadera [larguraSudadera=" + larguraSudadera + ", TipoUsoSudadera=" + TipoUsoSudadera + ", Gorro="
-				+ Gorro + ", getId()=" + getId() + ", getPrecio()=" + getPrecio() + ", getTalla()=" + getTalla()
-				+ ", getPaisFabricado()=" + getPaisFabricado() + ", getUnidades()=" + getUnidades() + ", getMarca()="
-				+ getMarca() + "]";
 	}
 	
 	

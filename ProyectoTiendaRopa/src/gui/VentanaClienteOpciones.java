@@ -9,11 +9,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VentanaClienteOpciones extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Cliente cliente;
+	private JFrame ventanaClienteOpciones;
     
     public VentanaClienteOpciones(Cliente cliente){
         //super("Panel de Cliente"); //titulo ventana?
     	this.cliente = cliente;
+    	ventanaClienteOpciones= this;
+    	
+    	
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300,200);
@@ -32,8 +40,9 @@ public class VentanaClienteOpciones extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e){
                 JOptionPane.showMessageDialog(null, "mostrando Stock");
-                VentanaCatalogo venCatalogo = new VentanaCatalogo();
-                venCatalogo.mostrarVentana();
+                @SuppressWarnings("unused")
+				VentanaCatalogo venCatalogo = new VentanaCatalogo(cliente);
+                ventanaClienteOpciones.dispose();
                 
                 
                 
@@ -46,7 +55,8 @@ public class VentanaClienteOpciones extends JFrame{
             public void actionPerformed(ActionEvent e){
             //Logica para ver el stock
                 JOptionPane.showMessageDialog(null, "Mostrando información de clientes...");
-                VentanaEditarPerfil ventanaEditarPerfil = new VentanaEditarPerfil(cliente );
+                @SuppressWarnings("unused")
+				VentanaEditarPerfil ventanaEditarPerfil = new VentanaEditarPerfil(cliente );
                 
                 //implementar metodo gestion clientes
                 //Datos del cliente??
@@ -76,7 +86,10 @@ public class VentanaClienteOpciones extends JFrame{
         add(btnCerrarSesion);
         
     } 
-    public void mostrarVentana(){
+    public Cliente getCliente() {
+		return cliente;
+	}
+	public void mostrarVentana(){
         SwingUtilities.invokeLater(new Runnable(){
             @Override
             public void run(){
@@ -90,13 +103,13 @@ public class VentanaClienteOpciones extends JFrame{
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
-		private Cliente cliente;
+		
 	    private JTextField  txtNuevaContrasena;
 	    private JTextField  txtAgregarDinero;
 	    private JLabel      lblSaldo;
 	    
 	    public VentanaEditarPerfil(Cliente ventanaClienteOpciones){
-	        this.cliente = ventanaClienteOpciones;
+	       
 	        
 	        setTitle("FreshMarket - Editar perfil");
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

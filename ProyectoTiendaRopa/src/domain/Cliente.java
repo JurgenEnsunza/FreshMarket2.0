@@ -10,7 +10,7 @@ public class Cliente implements Comparable <Cliente> {
 	private String usuario;
 	private Date FechaSTR;
 	private String contraseña;
-	 private double  saldo;
+	private double  saldo;
 	
 	private SimpleDateFormat fechaNacimiento = new SimpleDateFormat("dd-MM-yyyy");
 	
@@ -46,19 +46,6 @@ public class Cliente implements Comparable <Cliente> {
 
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
-	}
-
-
-
-
-
-
-	public Cliente(String dni, String usuario, Date FechaSTR, String contraseña) {
-		super();
-		this.dni = dni;
-		this.usuario = usuario;
-		this.FechaSTR = FechaSTR;
-		this.contraseña = contraseña;
 	}
 	
 	

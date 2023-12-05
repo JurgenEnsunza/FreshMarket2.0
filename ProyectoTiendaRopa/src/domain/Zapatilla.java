@@ -1,4 +1,8 @@
 package domain;
+
+import domain.enums.Talla;
+import domain.enums.TipoUso;
+
 public class Zapatilla extends Producto{	
 
 	private TipoUso tipoZapatilla;

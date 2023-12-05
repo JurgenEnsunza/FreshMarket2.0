@@ -1,5 +1,9 @@
 package domain;
 
+import domain.enums.Largura;
+import domain.enums.Talla;
+import domain.enums.TipoUso;
+
 public class Camiseta extends  Producto {
 	
 	private Largura larguraCamiseta;

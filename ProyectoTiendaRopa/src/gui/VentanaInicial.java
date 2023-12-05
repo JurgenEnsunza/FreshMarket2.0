@@ -12,7 +12,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class VentanaInicial extends JFrame {
-    public VentanaInicial(){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	public VentanaInicial(){
         setTitle("Nombre de la tienda - inicio de sesión");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(250,200);
@@ -74,7 +80,11 @@ public class VentanaInicial extends JFrame {
 }
 
 class VentanaAdministrador extends JFrame {
-    private String[][] datosUsuarios = {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String[][] datosUsuarios = {
         {"Usuario1", "contraseña1"},
         {"Usuario2", "contraseña2"},
         {"Usuario3", "contraseña3"}};
@@ -153,7 +163,12 @@ class VentanaAdministrador extends JFrame {
 class VentanaCliente extends JFrame {
     
    
-    public  VentanaCliente(){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public  VentanaCliente(){
         setTitle("Nombre de la tienda - sesión cliente");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -223,7 +238,12 @@ class VentanaCliente extends JFrame {
 }
 
 class VentanaRegistro extends JFrame {
-    public VentanaRegistro(){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public VentanaRegistro(){
         setTitle("Nombre de la tienda - registro");
         setSize(500,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

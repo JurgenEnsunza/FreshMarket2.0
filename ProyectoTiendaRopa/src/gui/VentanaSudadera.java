@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,24 +15,30 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import domain.Cliente;
 import domain.ModeloTablaSudadera;
 import domain.Sudadera;
-import domain.Talla;
 import domain.Tienda;
+import domain.enums.Talla;
 
 
 public class VentanaSudadera extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private JFrame ventanaSudadera;
 	private JButton btnVolver, btnAniadirCarrito, btnVerCarrito;
 	private JSpinner unidadesSeleccionar;
@@ -56,12 +62,14 @@ public class VentanaSudadera extends JFrame {
 	
 	
 	
-	public VentanaSudadera(JFrame ventanaCatalogo){
+	public VentanaSudadera(Cliente cliente){
 		setSize(400,300);
 		setLocationRelativeTo(null);
 		setTitle("Sudaderas");
+		
 		setVisible(true);
 		
+	
 		ventanaSudadera = this;
 		
 		//Creacion Distribuciones del panel
@@ -78,6 +86,12 @@ public class VentanaSudadera extends JFrame {
 		panelCentroDerechaAbajo=new JPanel();
 		
 		panelSur = new JPanel(new GridLayout(1,2));
+		
+		panelNorte.setOpaque(false);
+		panelCentro.setOpaque(false);
+		panelSur.setOpaque(false);
+		
+		
 		getContentPane().add(panelNorte,BorderLayout.NORTH);
 		getContentPane().add(panelCentro,BorderLayout.CENTER);
 		getContentPane().add(panelSur,BorderLayout.SOUTH);
@@ -139,6 +153,7 @@ public class VentanaSudadera extends JFrame {
 		List<Sudadera> sudadera = Tienda.getSudaderaLista();
 		tabla.setModel(new ModeloTablaSudadera(sudadera));
 		
+		
 		//Eventos
 		
 		
@@ -158,7 +173,8 @@ public class VentanaSudadera extends JFrame {
          });
 		
 		btnVolver.addActionListener(e ->{
-			VentanaCatalogo n = new VentanaCatalogo();
+			@SuppressWarnings("unused")
+			VentanaCatalogo n = new VentanaCatalogo(cliente);
 			ventanaSudadera.dispose();
 			
 			
@@ -172,18 +188,8 @@ public class VentanaSudadera extends JFrame {
 			int fila = tabla.rowAtPoint(p);
 			String nombre = (String) tabla.getModel().getValueAt(fila, 0);
 			Sudadera s = Tienda.buscarSudadera(nombre);
-			verInformacionCompleta.repaint();
+			
 			verInformacionCompleta.setText(Tienda.InfoSudaderas(s));
-			
-			
-			
-			
-			
-			
-			
-				
-				
-				
 			}
 		});
 		
@@ -208,12 +214,3 @@ public class VentanaSudadera extends JFrame {
 	
 	
 }
-	
-		
-		
-		
-		
-		
-			
-
-
