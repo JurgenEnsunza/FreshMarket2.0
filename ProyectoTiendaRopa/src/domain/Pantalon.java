@@ -46,12 +46,6 @@ public class Pantalon extends Producto{
 		this.tipoDePantalon = tipoDePantalon;
 	}
 
-	@Override
-	public String toString() {
-		return "Pantalon [larguraPantalon=" + larguraPantalon + ", tipoDePantalon=" + tipoDePantalon + ", getId()="
-				+ getId() + ", getPrecio()=" + getPrecio() + ", getTalla()=" + getTalla() + ", getPaisFabricado()="
-				+ getPaisFabricado() + ", getUnidades()=" + getUnidades() + ", getMarca()=" + getMarca() + "]";
-	}
 	
 	
 	

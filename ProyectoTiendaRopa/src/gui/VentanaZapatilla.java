@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,33 +14,27 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import domain.Cliente;
-import domain.Compra;
 import domain.ModeloTablaSudadera;
-import domain.Producto;
-import domain.Sudadera;
+import domain.ModeloTablaZapatilla;
+import domain.Zapatilla;
 import domain.Tienda;
 import domain.enums.Talla;
 
-
-public class VentanaSudadera extends JFrame {
-	/**
-	 * 
-	 */
+public class VentanaZapatilla extends JFrame{
+	
 	private static final long serialVersionUID = 1L;
 	
-	private JFrame ventanaSudadera;
+	private JFrame ventanaZapatilla;
 	private JButton btnVolver, btnAniadirCarrito, btnVerCarrito;
 	private JSpinner unidadesSeleccionar;
 	private JSlider rangoPrecio;
@@ -54,25 +47,20 @@ public class VentanaSudadera extends JFrame {
 	private JLabel lblRangoPrecio,lblUnidades,lblTalla;
 	
 	
-	private ModeloTablaSudadera modeloSudadera;
+	private ModeloTablaZapatilla modeloZapatilla;
 	private JTable tabla;
 	private JScrollPane scrollTabla;
 	
-	
-	
-	
-	
-	
-	
-	public VentanaSudadera(Cliente cliente){
+	//Constructor
+	public VentanaZapatilla(Cliente cliente){
 		setSize(400,300);
 		setLocationRelativeTo(null);
-		setTitle("Sudaderas");
+		setTitle("Zapatillas");
 		
 		setVisible(true);
 		
 	
-		ventanaSudadera = this;
+		ventanaZapatilla = this;
 		
 		//Creacion Distribuciones del panel
 		panelNorte = new JPanel(new GridLayout(2,2));
@@ -132,8 +120,8 @@ public class VentanaSudadera extends JFrame {
 		
 		//Creacion Botones
 		btnVolver = new JButton("VOLVER");
-		btnAniadirCarrito = new JButton ("Comprar");
-		btnVerCarrito = new JButton("Ver Compras");
+		btnAniadirCarrito = new JButton ("Añadir articulo al Carrito");
+		btnVerCarrito = new JButton("Ver Carrito");
 		
 		//Añadir Btotones Panel
 		panelSur.add(btnVolver);
@@ -148,12 +136,12 @@ public class VentanaSudadera extends JFrame {
 		panelCentroDerechaAbajo.add(scrollInformacionEntera);
 		
 		//Creacion Tabla
-		modeloSudadera = new ModeloTablaSudadera(null);
-		tabla = new JTable(modeloSudadera);
+		modeloZapatilla = new ModeloTablaZapatilla(null);
+		tabla = new JTable(modeloZapatilla);
 		scrollTabla = new JScrollPane(tabla);
 		panelCentroIzquierda.add(scrollTabla);
-		List<Sudadera> sudadera = Tienda.getSudaderaLista();
-		tabla.setModel(new ModeloTablaSudadera(sudadera));
+		List<Zapatilla> zapatilla = Tienda.getZapatillaLista(); //Da error porque no esta creado en tienda
+		tabla.setModel(new ModeloTablaZapatilla(zapatilla));
 		
 		
 		//Eventos
@@ -163,21 +151,21 @@ public class VentanaSudadera extends JFrame {
 		rangoPrecio.addChangeListener(new ChangeListener() {
              @Override
              public void stateChanged(ChangeEvent e){
-                 filtrarSudaderas();
+                 filtrarZapatillas();
              }
          });
 	
         elegirTalla.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e){
-                 filtrarSudaderas();
+                 filtrarZapatillas();
              }
          });
 		
 		btnVolver.addActionListener(e ->{
 			@SuppressWarnings("unused")
 			VentanaCatalogo n = new VentanaCatalogo(cliente);
-			ventanaSudadera.dispose();
+			ventanaZapatilla.dispose();
 			
 			
 		});
@@ -189,41 +177,33 @@ public class VentanaSudadera extends JFrame {
 			Point p = e.getPoint();
 			int fila = tabla.rowAtPoint(p);
 			String nombre = (String) tabla.getModel().getValueAt(fila, 0);
-			Sudadera s = Tienda.buscarSudadera(nombre);
+			Zapatilla s = Tienda.buscarZapatilla(nombre); //error -- no creado en tienda
 			
-			verInformacionCompleta.setText(Tienda.InfoSudaderas(s));
+			verInformacionCompleta.setText(Tienda.InfoZapatilla(s));
 			}
-		});
-		
-		btnAniadirCarrito.addActionListener(e ->{
-			int fila = tabla.getSelectedRow();
-			String nombre = (String) tabla.getModel().getValueAt(fila, 0);
-			Sudadera s = Tienda.buscarSudadera(nombre);
-			Tienda.aniadirComprasSudadera(cliente, s, (int) unidadesSeleccionar.getValue());
-			
-			
-			
-			
 		});
 		
 		
 	}	
 		
 	
-	private void filtrarSudaderas(){
+	private void filtrarZapatillas(){
             Talla tallaSeleccionada = (Talla) elegirTalla.getSelectedItem();
             int precioMaximo = rangoPrecio.getValue();
             
-            List<Sudadera> sudaderasFiltradas = new ArrayList<>();
-            for(Sudadera sudadera : Tienda.getSudaderaLista()){
-                if(sudadera.getPrecio() >= precioMaximo && (tallaSeleccionada == null || sudadera.getTalla() == tallaSeleccionada)){
-                    sudaderasFiltradas.add(sudadera);
+            List<Zapatilla> zapatillasFiltradas = new ArrayList<>();
+            for(Zapatilla zapatilla : Tienda.getZapatillaLista()){
+                if(zapatilla.getPrecio() >= precioMaximo && (tallaSeleccionada == null || zapatilla.getTalla() == tallaSeleccionada)){
+                    zapatillasFiltradas.add(zapatilla);
                 }
             }
             
-            tabla.setModel(new ModeloTablaSudadera(sudaderasFiltradas));
+            tabla.setModel(new ModeloTablaZapatilla(zapatillasFiltradas));
             
         }
 	
 	
 }
+
+
+

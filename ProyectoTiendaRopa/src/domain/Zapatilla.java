@@ -37,12 +37,7 @@ public class Zapatilla extends Producto{
 	}
 
 	
-	@Override
-	public String toString() {
-		return "Zapatilla [tipoZapatilla=" + tipoZapatilla + ", getId()=" + getId() + ", getPrecio()=" + getPrecio()
-				+ ", getTalla()=" + getTalla() + ", getPaisFabricado()=" + getPaisFabricado() + ", getUnidades()="
-				+ getUnidades() + ", getMarca()=" + getMarca() + "]";
-	}
+	
 
 	
 	

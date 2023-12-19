@@ -112,6 +112,17 @@ class VentanaAdministrador extends JFrame {
         
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton btnOK = new JButton("OK");
+        JButton btnVolver = new JButton("Volver");
+        
+        
+        btnVolver.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		setVisible(false);
+        		new VentanaInicial().setVisible(true);
+        	}
+        	
+        });
         
         //Agregamos el actionListener del boton
         btnOK.addActionListener(new ActionListener () {
@@ -191,6 +202,17 @@ class VentanaCliente extends JFrame {
         
         JPanel panelBoton = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton btnOK = new JButton("OK");
+        JButton btnVolver = new JButton("Volver");
+        
+        
+        btnVolver.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		setVisible(false);
+        		new VentanaInicial().setVisible(true);
+        	}
+        	
+        });
         
         //Agregamos el actionListener del boton
         btnOK.addActionListener(new ActionListener () {
@@ -267,6 +289,17 @@ class VentanaRegistro extends JFrame {
         JTextField fechaNacimientoField = new JTextField(15);
         JPasswordField contraseñaField = new JPasswordField(15);
         JButton registrarButton = new JButton("Registo");
+        JButton btnVolver = new JButton("Volver");
+        
+        
+        btnVolver.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		setVisible(false);
+        		new VentanaInicial().setVisible(true);
+        	}
+        	
+        });
         
         //evento del botón
         registrarButton.addActionListener((ActionEvent e) ->{

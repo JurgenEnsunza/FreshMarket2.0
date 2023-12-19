@@ -54,13 +54,7 @@ public class Camiseta extends  Producto {
 		this.tipoDeCamiseta = tipoDeCamiseta;
 	}
 
-	@Override
-	public String toString() {
-		return "Camiseta [larguraCamiseta=" + larguraCamiseta + ", tipoDeCamiseta=" + tipoDeCamiseta + ", getId()="
-				+ getId() + ", getPrecio()=" + getPrecio() + ", getTalla()=" + getTalla() + ", getPaisFabricado()="
-				+ getPaisFabricado() + ", getUnidades()=" + getUnidades() + ", getMarca()=" + getMarca() + "]";
-	}
-
+	
 	
 	
 	
