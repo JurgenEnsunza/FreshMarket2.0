@@ -26,6 +26,8 @@ import javax.swing.event.ChangeListener;
 import domain.Cliente;
 import domain.ModeloTablaSudadera;
 import domain.ModeloTablaZapatilla;
+import domain.Pantalon;
+import domain.Sudadera;
 import domain.Zapatilla;
 import domain.Tienda;
 import domain.enums.Talla;
@@ -182,6 +184,19 @@ public class VentanaZapatilla extends JFrame{
 			verInformacionCompleta.setText(Tienda.InfoZapatilla(s));
 			}
 		});
+		
+		btnAniadirCarrito.addActionListener(e ->{
+			int fila = tabla.getSelectedRow();
+			String nombre = (String) tabla.getModel().getValueAt(fila, 0);
+			Zapatilla z = Tienda.buscarZapatilla(nombre);
+			Tienda.aniadirComprasZapatilla(cliente, z, (int) unidadesSeleccionar.getValue());
+			System.out.println(Tienda.getCompras());
+			
+			
+			
+			
+		});
+		
 		
 		
 	}	

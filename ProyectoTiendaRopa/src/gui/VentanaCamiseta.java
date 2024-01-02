@@ -28,6 +28,7 @@ import javax.swing.event.ChangeListener;
 
 import domain.Cliente;
 import domain.ModeloTablaCamiseta;
+import domain.Sudadera;
 import domain.Camiseta;
 import domain.Tienda;
 import domain.enums.Talla;
@@ -192,6 +193,19 @@ public class VentanaCamiseta extends JFrame {
 			verInformacionCompleta.setText(Tienda.InfoCamiseta(s));
 			}
 		});
+		
+		btnAniadirCarrito.addActionListener(e ->{
+			int fila = tabla.getSelectedRow();
+			String nombre = (String) tabla.getModel().getValueAt(fila, 0);
+			Camiseta ca = Tienda.buscarCamiseta(nombre);
+			Tienda.aniadirComprasCamiseta(cliente, ca, (int) unidadesSeleccionar.getValue());
+			System.out.println(Tienda.getCompras());
+			
+			
+			
+			
+		});
+		
 		
 		
 	}	

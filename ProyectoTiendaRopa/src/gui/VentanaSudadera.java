@@ -200,6 +200,7 @@ public class VentanaSudadera extends JFrame {
 			String nombre = (String) tabla.getModel().getValueAt(fila, 0);
 			Sudadera s = Tienda.buscarSudadera(nombre);
 			Tienda.aniadirComprasSudadera(cliente, s, (int) unidadesSeleccionar.getValue());
+			System.out.println(Tienda.getCompras());
 			
 			
 			

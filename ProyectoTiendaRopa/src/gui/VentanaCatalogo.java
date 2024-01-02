@@ -111,7 +111,9 @@ public class VentanaCatalogo extends JFrame {
 	
 		//Liseners botonesProductos
 		btnCamiseta.addActionListener(e ->{
-			
+				
+			new VentanaCamiseta(cliente);
+			ventanaCatalogo.dispose();		
 		});
 		
 		btnSudadera.addActionListener(e ->{
@@ -123,13 +125,19 @@ public class VentanaCatalogo extends JFrame {
 			
 		});
 		
-		
-
 		btnPantalon.addActionListener(e ->{
+			
+			new VentanaPantalon(cliente);
+			ventanaCatalogo.dispose();
+			
 	
 		});
 
 		btnZapatillas.addActionListener(e ->{
+			
+			new VentanaZapatilla(cliente);
+			ventanaCatalogo.dispose();
+			
 		
 		});
 

@@ -29,6 +29,7 @@ import javax.swing.event.ChangeListener;
 import domain.Cliente;
 import domain.ModeloTablaPantalon;
 import domain.Pantalon;
+import domain.Sudadera;
 import domain.Tienda;
 import domain.enums.Talla;
 
@@ -192,6 +193,19 @@ public class VentanaPantalon extends JFrame {
 			verInformacionCompleta.setText(Tienda.InfoPantalon(s));
 			}
 		});
+		
+		btnAniadirCarrito.addActionListener(e ->{
+			int fila = tabla.getSelectedRow();
+			String nombre = (String) tabla.getModel().getValueAt(fila, 0);
+			Pantalon p = Tienda.buscarPantalon(nombre);
+			Tienda.aniadirComprasPantalon(cliente, p, (int)unidadesSeleccionar.getValue());
+			System.out.println(Tienda.getCompras());
+			
+			
+			
+			
+		});
+		
 		
 		
 	}	

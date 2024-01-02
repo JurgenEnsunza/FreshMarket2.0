@@ -16,11 +16,13 @@ public class VentanaCarrito extends JFrame {
 
 		public VentanaCarrito(Cliente c) {
 			setSize(400,300);
+			setVisible(true);
 			
 			modeloCarrito = new ModeloCarrito(null);
 			tabla = new JTable(modeloCarrito);
 			scroll = new JScrollPane(tabla);
 			getContentPane().add(scroll,BorderLayout.CENTER);
+			
 			
 		}
 	

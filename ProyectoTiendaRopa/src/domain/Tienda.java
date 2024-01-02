@@ -199,6 +199,12 @@ public class Tienda {
 	public static List<Zapatilla> getZapatillaLista() {
 		return zapatillaLista;
 	}
+	
+	
+
+	public static Map<Cliente, List<Compra>> getCompras() {
+		return compras;
+	}
 
 	//METODOS INFORMACION DE PRENDAS
 	public static String InfoSudaderas(Sudadera s) {
