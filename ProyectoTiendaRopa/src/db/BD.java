@@ -1,34 +1,41 @@
 package db;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import domain.Cliente;
 import domain.Tienda;
-
 public class BD {
 	
-	public static Connection initBD(String nombreBD) {
-		Connection con = null;
+	static Connection conn = null;
+	
+	public static Connection initBD() {
+		
 		try {
 			Class.forName("org.sqlite.JDBC");
-			con = DriverManager.getConnection("jdbc:sqlite:"+nombreBD);
-					
+			conn = DriverManager.getConnection("jdbc:sqlite:bd.db");
+			return conn;
 		} catch (ClassNotFoundException e) {
+			
 			e.printStackTrace();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			
+			System.out.println("error 2");
+		e.printStackTrace();
 		}
-		
-		return con;
+		return conn;
 	}
 	
-	public static void closeBD(Connection con) {
-		if(con!=null) {
+	public static void closeBD( ) {
+		if(conn!=null) {
 			try {
-				con.close();
+				conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -49,6 +56,30 @@ public class BD {
 				}
 			}
 		}
+	
+	public static void cargarPersonasEnLista(Connection con) {
+		String sql = "SELECT * FROM CLIENTES";
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			while(rs.next()) {
+				String dni = rs.getString("DNI");
+				String usuario = rs.getString("USUARIO");
+				String fecha = rs.getDate("FECHA").toString();
+				String contra = rs.getString("CONTRA");
+				Double saldo = rs.getDouble("SALDO");
+				Tienda.aniadirCliente(new Cliente(dni, usuario, fecha, contra, saldo));
+				
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 	
 	
